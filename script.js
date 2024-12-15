@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     { time: 182, text: "Yo soy mi refugio, mi fuerza, mi ser" },
     { time: 188, text: "De la luz vengo, y ahí volveré" },
     { time: 192, text: "Siempre conmigo, siempre estaré" },
-    { time: 198, text: "..^_^.." },
+    { time: 198, text: "........." },
     { time: 202, text: "SIEMPRE ESTARE CONTIGO, SOLO BUSCAME EN EL ESPEJO" },
     { time: 205, text: " " },
 
@@ -58,22 +58,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
   let currentLine = 0;
 
-  // Función para mostrar la letra de la canción
-  function showLyrics() {
-    lyricsElement.textContent = lyrics[currentLine];
-    currentLine++;
-    if (currentLine >= lyrics.length) {
-      currentLine = 0; // Reiniciar la letra cuando llegue al final
+  // Función para actualizar la letra sincronizada con la canción
+  function updateLyrics() {
+    // Verifica el tiempo actual de la canción
+    const currentTime = audio.currentTime;
+
+    // Mostrar la letra correspondiente si el tiempo coincide
+    if (currentLine < lyrics.length && currentTime >= lyrics[currentLine].time) {
+      lyricsElement.textContent = lyrics[currentLine].text;
+      currentLine++;
     }
   }
 
-  // Mostrar la letra cada 5 segundos (ajusta el tiempo según tu canción)
-  setInterval(showLyrics, 100);
+  // Cada 100ms actualizamos las letras
+  setInterval(updateLyrics, 100);
 
   // Iniciar el video de la cámara
-  let cameraStream = null;
-
-  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     const constraints = {
       video: {
         facingMode: "user" // Esto asegura que se use la cámara frontal
@@ -82,21 +83,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     navigator.mediaDevices.getUserMedia(constraints)
       .then(function(stream) {
-        cameraStream = stream; // Guardamos el stream para poder detenerlo luego
+        video.srcObject = stream;
+        console.log("Cámara accedida correctamente");
         video.srcObject = stream; // Asignar el stream al video
       })
       .catch(function(error) {
+        console.error("No se pudo acceder a la cámara", error);
         console.error("Error al acceder a la cámara:", error);
       });
   }
-
-  // Función para detener el stream de la cámara al final de la canción
-  audio.addEventListener('ended', function() {
-    console.log("La canción ha terminado, deteniendo el video...");
-    if (cameraStream) {
-      const tracks = cameraStream.getTracks();
-      tracks.forEach(track => track.stop()); // Detener todas las pistas del stream
-      video.srcObject = null; // Liberar el objeto video
-    }
-  });
 });
