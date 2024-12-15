@@ -74,8 +74,14 @@ document.addEventListener('DOMContentLoaded', function() {
   setInterval(updateLyrics, 100);
 
   // Iniciar el video de la cámara
-  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({ video: true })
+ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    const constraints = {
+      video: {
+        facingMode: "user" // Esto asegura que se use la cámara frontal
+      }
+    };
+
+    navigator.mediaDevices.getUserMedia(constraints)
       .then(function(stream) {
         video.srcObject = stream;
       })
