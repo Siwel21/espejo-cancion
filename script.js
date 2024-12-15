@@ -92,4 +92,13 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error("Error al acceder a la cámara:", error);
       });
   }
+  // Función para detener el stream de la cámara al final de la canción
+  audio.addEventListener('ended', function() {
+    console.log("La canción ha terminado, deteniendo el video...");
+    if (cameraStream) {
+      const tracks = cameraStream.getTracks();
+      tracks.forEach(track => track.stop()); // Detener todas las pistas del stream
+      video.srcObject = null; // Liberar el objeto video
+    }
+  });
 });
