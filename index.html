@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espejo con Canción</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="mirror-container">
+    <video id="camera" autoplay></video>
+    <div id="lyrics">
+      <p id="song-lyrics"></p>
+    </div>
+  </div>
+
+  <audio id="song" controls autoplay>
+    <source src="cancion.mp3" type="audio/mp3">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

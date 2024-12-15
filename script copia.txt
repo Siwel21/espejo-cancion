@@ -1,0 +1,47 @@
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+  // Acceder a la cámara
+  const video = document.getElementById('camera');
+  const lyricsElement = document.getElementById('song-lyrics');
+  const audio = document.getElementById('song');
+
+  // Obtener la letra de la canción (puedes cambiarla)
+  const lyrics = [
+    { time: 00:04.0, text: "Hoy me senté conmigo, sin nada que esconder" },     { time: 00:13.0, text:Quería entenderme, quería saber" },     { time: 00:18.0, ¿Por qué el peso? ¿Por qué el dolor?" }, ¿Qué pasó conmigo? ¿Dónde quedó el amor?",
+    "Te veo cansada,” me dije al mirar, “Tanto juicio encima, te quieres escapar. Pero aquí estoy contigo, no tienes que huir, Suelta lo que duele, déjalo ir.",
+    "Te olvidaste de ti, y eso está bien, A veces el camino no se puede entender. Pero no estás sola, aquí me tendrás, Siempre fui tu refugio, tu paz, tu hogar",
+"Deja el pasado, suelta el rencor, Mira más adentro, escucha tu voz. Eres más que tus miedos, más que tu error, Eres luz infinita, eres puro amor",
+"Brillas, aunque no lo veas aún, Siempre estuve aquí, eres mi luz. De las sombras te ayudo a salir, Te amo, contigo siempre voy a ir",
+"Me miré en el espejo, por fin me encontré, “¿Ves? Ahí estás tú, siempre lo supe bien. No importa el pasado, no importa el dolor, Siempre habrá camino mientras esté tu amor",
+"Perdónate hoy, lo necesitas ya, No hay razón para odiarte, siempre brillarás. La vida es un viaje, pero tú y yo, Siempre juntos iremos, siempre con amor",
+"Brillas, aunque no lo veas aún, Siempre estuve aquí, eres mi luz. De las sombras te ayudo a salir, Te amo, contigo siempre voy a ir",
+"Hoy me sentí en paz, hoy pude entender, Yo soy mi refugio, mi fuerza, mi ser. De la luz vengo, y ahí volveré, Siempre conmigo, siempre estaré.",
+
+    // Agrega más líneas de la canción aquí
+  ];
+
+  let currentLine = 0;
+
+  // Función para mostrar la letra de la canción
+  function showLyrics() {
+    lyricsElement.textContent = lyrics[currentLine];
+    currentLine++;
+    if (currentLine >= lyrics.length) {
+      currentLine = 0; // Reiniciar la letra cuando llegue al final
+    }
+  }
+
+  // Mostrar la letra cada 5 segundos (ajusta el tiempo según tu canción)
+  setInterval(showLyrics, 5000);
+
+  // Iniciar el video de la cámara
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function(stream) {
+        video.srcObject = stream;
+      })
+      .catch(function(error) {
+        console.error("No se pudo acceder a la cámara", error);
+      });
+  }
+});
