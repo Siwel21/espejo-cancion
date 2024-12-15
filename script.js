@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
   ];
 
   let currentLine = 0;
+  let cameraStream = null; // Declarar la variable de manera global
 
   // Función para actualizar la letra sincronizada con la canción
   function updateLyrics() {
