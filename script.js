@@ -1,4 +1,4 @@
-// script.js
+ // script.js
 document.addEventListener('DOMContentLoaded', function() {
   const video = document.getElementById('camera');
   const lyricsElement = document.getElementById('song-lyrics');
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     { time: 182, text: "Yo soy mi refugio, mi fuerza, mi ser" },
     { time: 188, text: "De la luz vengo, y ahí volveré" },
     { time: 192, text: "Siempre conmigo, siempre estaré" },
-    { time: 198, text: "..-_^.." },
+    { time: 198, text: "..-_-.." },
     { time: 202, text: "SIEMPRE ESTARE CONTIGO, SOLO BUSCAME EN EL ESPEJO" },
     { time: 205, text: " " },
 
