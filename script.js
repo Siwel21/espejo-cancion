@@ -83,10 +83,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     navigator.mediaDevices.getUserMedia(constraints)
       .then(function(stream) {
-        video.srcObject = stream;
+        console.log("Cámara accedida correctamente");
+        video.srcObject = stream; // Asignar el stream al video
       })
       .catch(function(error) {
-        console.error("No se pudo acceder a la cámara", error);
+        console.error("Error al acceder a la cámara:", error);
       });
   }
 });
+
