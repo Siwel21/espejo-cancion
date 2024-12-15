@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Definir las marcas de tiempo y las letras de la canción
   const lyrics = [
-    { time: 0, text: "SOLO MIRATE A LOS OJOS Y ESCUCHA" },
+    { time: 0, text: "SOLO MIRATE A LOS OJOS EN EL ESPEJO Y ESCUCHA LA CANCION" },
     { time: 5, text: "Hoy me senté conmigo" },
     { time: 9, text: "Sin nada que esconder" },
     { time: 13, text: "Quería entenderme, quería saber" },
