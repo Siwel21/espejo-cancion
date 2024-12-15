@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Mostrar la letra cada 5 segundos (ajusta el tiempo según tu canción)
-  setInterval(showLyrics, 5000);
+  setInterval(showLyrics, 100);
 
   // Iniciar el video de la cámara
   let cameraStream = null;
