@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     { time: 182, text: "Yo soy mi refugio, mi fuerza, mi ser" },
     { time: 188, text: "De la luz vengo, y ahí volveré" },
     { time: 192, text: "Siempre conmigo, siempre estaré" },
-    { time: 198, text: "..^_-.." },
+    { time: 198, text: "..-_^.." },
     { time: 202, text: "SIEMPRE ESTARE CONTIGO, SOLO BUSCAME EN EL ESPEJO" },
     { time: 205, text: " " },
 
@@ -98,8 +98,15 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("La canción ha terminado, deteniendo el video...");
     if (cameraStream) {
       const tracks = cameraStream.getTracks();
-      tracks.forEach(track => track.stop()); // Detener todas las pistas del stream
+      console.log("Pistas activas en el stream:", tracks); // Log para depurar  
+      
+      tracks.forEach(track => {
+        console.log("Deteniendo la pista:", track); // Log para depurar
+        track.stop(); // Detener todas las pistas del stream
+      });
+      
       video.srcObject = null; // Liberar el objeto video
+      console.log("Video detenido");
     }
   });
 });
