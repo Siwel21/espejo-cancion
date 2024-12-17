@@ -26,13 +26,7 @@ body, html {
   object-fit: cover;
   transform: scaleX(-1); /* Espejo */
 }
-/* Media query para dispositivos móviles */
-@media (max-width: 768px) {
-  #camera {
-    width: 70%; /* Reducir el tamaño al 70% en dispositivos móviles */
-    height: 70%;
-      }
-  }
+
 #lyrics {
   position: absolute;
   top: 50%;
