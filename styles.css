@@ -29,8 +29,8 @@ body, html {
 /* Media query para dispositivos móviles */
 @media (max-width: 768px) {
   #camera {
-    width: 50%; /* Reducir el tamaño al 70% en dispositivos móviles */
-    height: 50%;
+    width: 70%; /* Reducir el tamaño al 70% en dispositivos móviles */
+    height: 70%;
       }
   }
 #lyrics {
